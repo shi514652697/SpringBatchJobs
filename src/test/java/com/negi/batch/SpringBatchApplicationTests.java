@@ -25,6 +25,7 @@ public class SpringBatchApplicationTests {
 	
 	@Autowired
 	Job job;
+	//comment
 	
 	@Test
 	public void testBatch() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
