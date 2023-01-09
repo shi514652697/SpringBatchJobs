@@ -60,7 +60,7 @@ public class BatchConfig {
 	public Step step()
 	{
 		return sbf.get("Step1")
-				.<String,String>chunk(1)
+				.<String,String>chunk(500)
 				.reader(reader())
 				.processor(processor())
 				.writer(writer()).build();
@@ -77,7 +77,7 @@ public class BatchConfig {
 	}
 	
 	@Scheduled(cron="0 0/2 * * * ?", zone="CST")
-	//@SchedulerLock(name="jobname", lockAtLeastFor= "PT5M", lockAtMostFor="PT5M" )
+	//@SchedulerLock(name="jobname", lockAtLeastFor= "5", lockAtMostFor="PT5M" )
 	public void executeJob() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException
 	
 	{
