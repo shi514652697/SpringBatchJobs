@@ -35,28 +35,28 @@ public class BatchFileConfig {
 	private JobBuilderFactory jbf;
 	
 	@Bean
-	public Job job()
+	public Job job1()
 	{
-		return jbf.get("myJob").incrementer(new RunIdIncrementer()).start(step()).build();	
+		return jbf.get("myJob").incrementer(new RunIdIncrementer()).start(step1()).build();	
 	}
 	
 	
 	
 	@Bean
-	public Step step()
+	public Step step1()
 	{
 		return sbf.get("Step1")
 				.<Product,Product>chunk(1)
-				.reader(reader())
-				.processor(processor())
-				.writer(writer())
+				.reader(reader1())
+				.processor(processor1())
+				.writer(writer1())
 				.build();
 	}
 	
 	
 	
 	@Bean
-	public ItemReader<Product> reader()
+	public ItemReader<Product> reader1()
 	{
 		FlatFileItemReader<Product> flatFileItemReader = new FlatFileItemReader<>();
 		flatFileItemReader.setResource(new ClassPathResource("products.csv"));
@@ -73,7 +73,7 @@ public class BatchFileConfig {
 	}
 	
 	@Bean
-	public ItemProcessor<Product, Product> processor()
+	public ItemProcessor<Product, Product> processor1()
 	{
 		return ( p) ->{ p.setPrice(p.getPrice() - p.getPrice()*10/100);
 		return p;};
@@ -81,7 +81,7 @@ public class BatchFileConfig {
 	}
 	
 	@Bean
-	public ItemWriter<Product> writer()
+	public ItemWriter<Product> writer1()
 	{
 		JdbcBatchItemWriter<Product> jdbcBatchItemWriter = new JdbcBatchItemWriter<>();
 		jdbcBatchItemWriter.setDataSource(dataSource());

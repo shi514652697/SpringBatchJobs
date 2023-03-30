@@ -34,20 +34,20 @@ public class BatchConfig {
 	private JobBuilderFactory jbf;
 	
 	@Bean
-	public Reader reader()
+	public JobReader reader()
 	{
-		return new Reader();
+		return new JobReader();
 	}
 	
 	@Bean
-	public Writer writer()
+	public JobWriter writer()
 	{
-		return new Writer();
+		return new JobWriter();
 	}
 	@Bean
-	public Processor processor()
+	public JobProcessor processor()
 	{
-		return new Processor();
+		return new JobProcessor();
 	}
 	
 	@Bean

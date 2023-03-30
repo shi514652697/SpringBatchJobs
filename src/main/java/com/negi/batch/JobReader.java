@@ -5,7 +5,7 @@ import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
-public class Reader implements ItemReader<String> {
+public class JobReader implements ItemReader<String> {
 	
 	private String[] courses = {"Java","Spring","Angular"};
 	private int count =0;
